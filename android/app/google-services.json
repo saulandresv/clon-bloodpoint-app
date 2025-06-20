@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "887736007151",
+    "project_id": "bloodpoint-notificacion",
+    "storage_bucket": "bloodpoint-notificacion.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887736007151:android:88794d9839baed082f1e1a",
+        "android_client_info": {
+          "package_name": "cl.proyecto.bloodpoint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCinpCQxW_hpX_oyEnsBJ2coR49DMib8no"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

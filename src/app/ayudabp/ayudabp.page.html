@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <!-- Header with back button -->
+
+
+  <!-- FAQ List -->
+  <div class="faq-list">
+    <ion-item button detail="true" lines="none" class="faq-item" (click)="mostrarFAQ('funcionamiento')">
+      <ion-label>¿Cómo funciona la app?</ion-label>
+    </ion-item>
+
+    <ion-item button detail="true" lines="none" class="faq-item" (click)="mostrarFAQ('quien-puede-donar')">
+      <ion-label>¿Quién puede donar sangre?</ion-label>
+    </ion-item>
+
+    <ion-item button detail="true" lines="none" class="faq-item" (click)="mostrarFAQ('frecuencia')">
+      <ion-label>¿Con qué frecuencia puedo donar?</ion-label>
+    </ion-item>
+  </div>
+
+  <!-- No encontré mi respuesta section -->
+  <div class="not-found-section">
+    <h2>No encontré mi respuesta</h2>
+    <ion-button expand="block" class="chat-button" [routerLink]="['/menu/chatbot']">
+      Iniciar chat automatizado
+      <i class="fa-solid fa-comments" slot="end"></i>
+    </ion-button>
+  </div>
+</ion-content>

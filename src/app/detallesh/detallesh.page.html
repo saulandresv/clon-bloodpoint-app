@@ -1,0 +1,95 @@
+<ion-header [translucent]="true">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <!-- Header with back button -->
+  <div class="header-section">
+    <div class="back-button" [routerLink]="['/menu/historialdonacion']">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+    <h1>Detalle de donación</h1>
+  </div>
+
+  <!-- Details Card -->
+  <div class="details-card" *ngIf="donacion; else noDatos">
+    <!-- Centro Info Section -->
+    <div class="centro-section">
+      <div class="centro-header">
+        <i class="fa-solid fa-hospital"></i>
+        <h2>{{ getCentroName() }}</h2>
+      </div>
+    </div>
+
+    <!-- Basic Info Section -->
+    <div class="info-section">
+      <div class="info-item">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <div class="info-text">
+          <span class="label">Dirección:</span>
+          <span class="value">{{ getDireccionCentro() }}</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <i class="fa-regular fa-calendar-days"></i>
+        <div class="info-text">
+          <span class="label">Fecha de donación:</span>
+          <span class="value">{{ formatearFecha(donacion.fecha_donacion) }}</span>
+        </div>
+      </div>
+
+      <div class="info-item" *ngIf="getTipoSangre()">
+        <i class="fa-solid fa-droplet"></i>
+        <div class="info-text">
+          <span class="label">Tipo de sangre:</span>
+          <span class="value tipo-sangre">🩸 {{ getTipoSangre() }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Info Section -->
+    <div class="additional-info">
+      <div class="info-row">
+        <span class="label">Tipo de donación:</span>
+        <span class="value pill">{{ getTipoDonacion() }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Cantidad donada:</span>
+        <span class="value pill">{{ getCantidadDonada() }}</span>
+      </div>
+    </div>
+
+    <!-- Appreciation message -->
+    <div class="appreciation-message">
+      <i class="fa-solid fa-heart"></i>
+      <p>¡Gracias por tu donación! Cada gota cuenta para salvar vidas.</p>
+    </div>
+
+    <!-- Share button -->
+    <div class="share-section">
+      <ion-button expand="block" fill="outline" (click)="compartirDonacion()" class="share-button">
+        <i class="fa-solid fa-share-nodes" slot="start"></i>
+        Compartir mi donación
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- No data template -->
+  <ng-template #noDatos>
+    <div class="no-data">
+      <i class="fa-solid fa-exclamation-triangle"></i>
+      <h3>No se encontraron datos</h3>
+      <p>No se pudo cargar la información de esta donación.</p>
+      <ion-button fill="clear" [routerLink]="['/menu/historialdonacion']">
+        <i class="fas fa-arrow-left"></i>
+        Volver al historial
+      </ion-button>
+    </div>
+  </ng-template>
+</ion-content>

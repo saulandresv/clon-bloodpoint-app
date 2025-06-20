@@ -1,0 +1,167 @@
+<ion-header [translucent]="true">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <!-- Avatar Section -->
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="auto" class="ion-text-center">
+        <h1>Editar Perfil</h1>
+        <div class="avatar-wrapper" (click)="fileInput.click()">
+          <ion-avatar class="center-avatar">
+            <img [src]="avatarUrl" alt="Avatar" />
+          </ion-avatar>
+          <div class="plus-button"><i class="fa-solid fa-camera"></i></div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Form Items -->
+  <ion-list>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-id-card" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">RUT</ion-label>
+      <ion-text>{{ form.rut }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-user" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Nombre Completo</ion-label>
+      <ion-text>{{ form.nombre_completo }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-venus-mars" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Género biológico</ion-label>
+      <ion-text>{{ form.sexo === 'H' ? 'Masculino' : 'Femenino' }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-calendar" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+      <ion-text>{{ form.fecha_nacimiento }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-flag" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Nacionalidad</ion-label>
+      <ion-text>{{ form.nacionalidad }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-droplet" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Tipo de Sangre</ion-label>
+      <ion-text>{{ form.tipo_sangre }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-envelope" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Correo electrónico</ion-label>
+      <ion-input [(ngModel)]="form.email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-location-dot" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Dirección</ion-label>
+      <ion-input [(ngModel)]="form.direccion" name="direccion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-city" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Comuna</ion-label>
+      <ion-input [(ngModel)]="form.comuna" name="comuna"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-phone" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label position="stacked">Teléfono</ion-label>
+      <ion-input [(ngModel)]="form.fono" name="fono"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-briefcase" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-select 
+        [(ngModel)]="form.ocupacion" 
+        name="ocupacion"
+        label="Ocupación"
+        labelPlacement="stacked">
+        <ion-select-option value="estudiante">Estudiante</ion-select-option>
+        <ion-select-option value="trabajador">Trabajador</ion-select-option>
+        <ion-select-option value="jubilado">Jubilado</ion-select-option>
+        <ion-select-option value="otro">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <div class="custom-thumbnail">
+          <i class="fa-solid fa-bell" style="color: #b93636;"></i>
+        </div>
+      </ion-thumbnail>
+      <ion-label class="ion-text-wrap">¿Deseas recibir notificaciones de emergencia?</ion-label>
+      <ion-checkbox
+        slot="end"
+        [(ngModel)]="form.noti_emergencia"
+        name="noti_emergencia"
+        aria-label="Recibir notificaciones de emergencia">
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" class="confirm-button" (click)="actualizarPerfil()">
+    Guardar Cambios
+  </ion-button>
+
+  <input #fileInput type="file" hidden accept="image/*" (change)="onImageSelected($event)">
+</ion-content>

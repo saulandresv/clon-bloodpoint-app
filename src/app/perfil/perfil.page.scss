@@ -1,0 +1,189 @@
+// Fix content spacing - responsive margin
+ion-content {
+  --padding-top: 8vh;
+}
+
+.custom-thumbnail {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .custom-thumbnail i {
+    font-size: 26px;
+  }
+  
+
+  
+  .grid-transparente,
+  .grid-transparente ion-list,
+  .grid-transparente strong {
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .custom-grid {
+    max-width: 90%; /* ajustá el porcentaje según qué tan angosto querés */
+    margin: 0 auto; /* centra horizontalmente */
+  }
+  
+  .grid-transparente ion-item {
+    --background: transparent !important;
+    --ion-background-color: transparent !important;
+    --ion-item-background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .grid-transparente ion-label p strong {
+    color: #b93636 !important;
+  }
+  
+  .grid-transparente ion-label p {
+    color: #b93636 !important;
+  }
+  
+  .grid-transparente ion-item {
+    --color: #b93636 !important;
+  }
+
+  .static-avatar {
+    margin: 0 auto;
+    width: 100px;
+    height: 150px;
+  }
+
+  .avatar-circle {
+    width: 120px;
+    height: 120px;
+    background-color: #ffffff; /* o el color que quieras para el fondo */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatar-circle i {
+    color: #b93636;
+    font-size: 50px; /* Ajustá el tamaño del ícono según tu preferencia */
+  }
+
+  ion-content.fondo {
+    position: relative;
+    z-index: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .fondo {
+    --background: none !important;
+    background: linear-gradient(to bottom, #FFFFFF) !important;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .fondo {
+      background: linear-gradient(to bottom, #FFFFFF) !important;
+    }
+  }
+
+  ion-content {
+    --background: white;
+    position: relative;
+    height: 100%;
+
+    .ovalo {
+      position: absolute;
+      border-radius: 100%;
+      width: 150%;
+      height: 95%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .ovalotop {
+      top: 180px;
+      background-color: #b63434; // cf8686
+      z-index: -1;
+    }
+
+    .ovalomid {
+      top: 470px;
+      background-color: #e57373;
+      z-index: -2;
+    }
+
+    .static-avatar {
+      width: 120px;
+      height: 120px;
+      margin: 20px auto;
+      
+      .avatar-circle {
+        width: 100%;
+        height: 100%;
+        background: #fff2f2;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: 60px;
+          color: #e57373;
+        }
+      }
+    }
+
+    ion-list {
+      background: transparent;
+      padding: 16px;
+
+      ion-item {
+        --background: #fff2f2;
+        --border-radius: 25px;
+        margin-bottom: 16px;
+        --padding-start: 16px;
+        --padding-end: 16px;
+
+        .custom-thumbnail {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fff2f2;
+          border-radius: 50%;
+
+          i {
+            font-size: 20px;
+            color: #b93636 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        &:hover {
+          --background: #ffe6e6;
+        }
+
+        &:active {
+          .custom-thumbnail {
+            background: #ffe6e6;
+          }
+        }
+      }
+    }
+  }
+
+  // Style for the avatar icon
+  .avatar-circle {
+    i {
+      font-size: 60px;
+      color: #b93636 !important;
+      display: flex !important;
+    }
+  }
+

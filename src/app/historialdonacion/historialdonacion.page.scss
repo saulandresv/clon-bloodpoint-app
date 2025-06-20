@@ -1,0 +1,153 @@
+// Fix content spacing - responsive margin
+ion-content {
+  --padding-top: 8vh;
+}
+
+.custom-thumbnail {
+    width: 60px; // Tamaño estándar de ion-thumbnail
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .custom-thumbnail i {
+    font-size: 26px; // Ajusta esto según necesites que se vea más grande o más pequeño
+  }
+
+  ion-content {
+    --background: hsl(0, 76%, 43%);
+    position: relative;
+    height: 100%;
+
+    .ovalo {
+      position: absolute;
+      border-radius: 100%;
+      width: 150%;
+      height: 95%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .ovalotop {
+      top: 180px;
+      background-color: #cf8686;
+      z-index: -1;
+    }
+
+    .ovalomid {
+      top: 470px;
+      background-color: #e57373;
+      z-index: -2;
+    }
+
+    .header-section {
+      padding: 20px 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+
+      .back-button {
+        color: white;
+        font-size: 24px;
+      }
+
+      h1 {
+        color: white;
+        font-size: 28px;
+        margin: 0;
+      }
+    }
+
+    ion-list {
+      background: transparent;
+      padding: 16px;
+      position: relative;
+      z-index: 1;
+
+      ion-item {
+        --background: #fff2f2;
+        --border-radius: 25px;
+        margin-bottom: 16px;
+        --padding-start: 16px;
+        --padding-end: 16px;
+        --inner-padding-end: 16px;
+
+        .donation-icon {
+          width: 48px;
+          height: 48px;
+          background: #ffe6e6;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 16px;
+
+          i {
+            color: #b93636;
+            font-size: 20px;
+          }
+        }
+
+        ion-label {
+          h2 {
+            font-size: 18px;
+            color: #333333;
+            margin: 0 0 4px 0;
+            font-weight: 600;
+          }
+
+          p {
+            color: #666666;
+            margin: 2px 0;
+            font-size: 14px;
+            
+            &.fecha-donacion {
+              font-weight: 500;
+            }
+            
+            &.tipo-sangre {
+              color: #b93636;
+              font-weight: 600;
+              font-size: 13px;
+            }
+          }
+        }
+
+        i[slot="end"] {
+          color: #b93636;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: white;
+      position: relative;
+      z-index: 1;
+
+      i {
+        font-size: 64px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 24px;
+        margin: 0 0 12px 0;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0;
+        line-height: 1.5;
+      }
+    }
+  }

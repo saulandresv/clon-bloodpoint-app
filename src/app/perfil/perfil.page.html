@@ -1,0 +1,118 @@
+
+
+<ion-content [fullscreen]="true">
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <!-- Avatar Section -->
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="auto" class="ion-text-center">
+        <h1>Perfil</h1>
+        <div class="static-avatar">
+          <div class="avatar-circle">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Menu Items -->
+  <ion-grid [fixed]="true">
+    <ion-list>
+<!-- <ion-item button (click)="mostrarQR()">...</ion-item>
+        <ion-thumbnail slot="start">
+          <div class="custom-thumbnail">
+            <i class="fa-solid fa-qrcode" style="color: #b93636;"></i>
+          </div>
+        </ion-thumbnail>
+        <ion-label>
+          <p><strong style="color: #b93636;">Ver Perfil QR</strong></p>
+        </ion-label>
+      </ion-item>
+ -->
+      <!-- Nuevo botón para escanear QR -->
+<!-- <ion-item button (click)="escanearQR()">...</ion-item> 
+        <ion-thumbnail slot="start">
+          <div class="custom-thumbnail">
+            <i class="fa-solid fa-camera" style="color: #b93636;"></i>
+          </div>
+        </ion-thumbnail>
+        <ion-label>
+          <p><strong style="color: #b93636;">Escanear QR Donante</strong></p>
+        </ion-label>
+      </ion-item>
+-->
+      <ion-item button [routerLink]="['/menu/editarperfil']">
+        <ion-thumbnail slot="start">
+          <div class="custom-thumbnail">
+            <i class="fa-solid fa-wrench" style="color: #b93636;"></i>
+          </div>
+        </ion-thumbnail>
+        <ion-label>
+          <p><strong style="color: #b93636;">Editar Perfil</strong></p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button [routerLink]="['/menu/historialdonacion']">
+        <ion-thumbnail slot="start">
+          <div class="custom-thumbnail">
+            <i class="fa-solid fa-bookmark" style="color: #b93636;"></i>
+          </div>
+        </ion-thumbnail>
+        <ion-label>
+          <p><strong style="color: #b93636;">Historial de Donaciones</strong></p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button [routerLink]="['/menu/logros']">
+        <ion-thumbnail slot="start">
+          <div class="custom-thumbnail">
+            <i class="fa-solid fa-medal" style="color: #b93636;"></i>
+          </div>
+        </ion-thumbnail>
+        <ion-label>
+          <p><strong style="color: #b93636;">Ver Logros</strong></p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button [routerLink]="['/menu/solicitardonacion']">
+        <ion-thumbnail slot="start">
+          <div class="custom-thumbnail">
+            <i class="fa-solid fa-droplet" style="color: #b93636;"></i>
+          </div>
+        </ion-thumbnail>
+        <ion-label>
+          <p><strong style="color: #b93636;">Solicitar Donacion</strong></p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button [routerLink]="['/menu/ayudabp']">
+        <ion-thumbnail slot="start">
+          <div class="custom-thumbnail">
+            <i class="fa-solid fa-circle-info" style="color: #b93636;"></i>
+          </div>
+        </ion-thumbnail>
+        <ion-label>
+          <p><strong style="color: #b93636;">Ayuda</strong></p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button (click)="cerrarSesion()">
+        <ion-thumbnail slot="start">
+          <div class="custom-thumbnail">
+            <i class="fa-solid fa-right-from-bracket fa-flip-both" style="color: #b93636;"></i>
+          </div>
+        </ion-thumbnail>
+        <ion-label>
+          <p><strong style="color: #b93636;">Cerrar Sesión</strong></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+</ion-content>

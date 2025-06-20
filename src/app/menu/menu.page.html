@@ -1,0 +1,32 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="index" routerLink="/menu/index">
+      <i class="fa-solid fa-house"></i>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+
+    <!-- Solo para donantes -->
+    <ion-tab-button *ngIf="tipoUsuario !== 'representante'" tab="puntosdonacion" routerLink="/menu/puntosdonacion">
+      <i class="fa-solid fa-droplet"></i>
+      <ion-label>Donar</ion-label>
+    </ion-tab-button>
+
+    <!-- Solo para representantes -->
+    <ion-tab-button *ngIf="tipoUsuario === 'representante'" tab="seleccionarlugardonacion" routerLink="/menu/seleccionarlugardonacion">
+      <i class="fa-solid fa-cogs"></i>
+      <ion-label>Administrar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="notificacion" routerLink="/menu/notificacion">
+      <i class="fa-solid fa-bell"></i>
+      <ion-label>Notificacion</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="perfil" routerLink="/menu/perfil">
+      <i class="fa-solid fa-user"></i>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

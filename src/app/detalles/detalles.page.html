@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <div class="header-section">
+    <ion-back-button 
+      defaultHref="/menu/puntosdonacion"
+      (click)="goBack()"
+      text="" 
+      icon="arrow-back">
+    </ion-back-button>
+    <h1>{{ center?.nombre_centro || 'Nombre no disponible' }}</h1>
+  </div>
+
+  <div class="details-card" *ngIf="center">
+    <div class="info-item">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <div class="info-content">
+        <span class="label">Dirección:</span>
+        <span class="value">{{ center.direccion_centro || 'No disponible' }}</span>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <i class="fa-solid fa-location-dot"></i>
+      <div class="info-content">
+        <span class="label">Comuna:</span>
+        <span class="value">{{ center.comuna || 'No disponible' }}</span>
+      </div>
+    </div>
+
+    <div class="info-item" *ngIf="center.tipo !== 'campana'">
+      <i class="fa-solid fa-phone"></i>
+      <div class="info-content">
+        <span class="label">Teléfono:</span>
+        <span class="value">{{ center.telefono || 'No disponible' }}</span>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <i class="fa-solid fa-location-dot"></i>
+      <div class="info-content">
+        <span class="label">Distancia:</span>
+        <span class="value">{{ center.distancia || 'Calculando...' }} kilómetros</span>
+      </div>
+    </div>
+  </div>
+  <ion-spinner
+  *ngIf="isLoading"
+  name="crescent"
+  color="primary"
+  style="display: block; margin: 20px auto;">
+</ion-spinner>
+  <ion-button expand="block" class="confirm-button" (click)="calcularRutaYMostrarEnMapa()">
+    generar ruta
+  </ion-button>
+  
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <!-- Header with back button -->
+  <div class="header-section">
+    <div class="back-button" [routerLink]="['/menu/perfil']">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+    <h1>Historial de donaciones</h1>
+  </div>
+
+  <!-- Donation List -->
+  <ion-list *ngIf="donaciones.length > 0; else sinDonaciones">
+    <ion-item *ngFor="let don of donaciones; let i = index" button (click)="irADetalle(don, i)">
+      <div class="donation-icon">
+        <i class="fa-solid fa-droplet"></i>
+      </div>
+      <ion-label>
+        <h2>{{ getCentroName(don) }}</h2>
+        <p class="fecha-donacion">{{ formatearFecha(don.fecha_donacion) }}</p>
+        <p class="tipo-sangre" *ngIf="don.tipo_sangre">🩸 {{ don.tipo_sangre }}</p>
+      </ion-label>
+      <i class="fas fa-chevron-right" slot="end"></i>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #sinDonaciones>
+    <div class="empty-state">
+      <i class="fa-solid fa-heart-pulse"></i>
+      <h3>No hay donaciones registradas</h3>
+      <p>Cuando realices tu primera donación, aparecerá aquí tu historial.</p>
+    </div>
+  </ng-template>
+
+</ion-content>

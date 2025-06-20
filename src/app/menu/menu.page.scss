@@ -1,0 +1,31 @@
+ion-tab-bar {
+  --background: hsl(0, 76%, 43%);
+  --color: white;
+  --color-selected: white;
+
+  ion-tab-button {
+    i {
+      font-size: 20px;
+      color: white;
+    }
+
+    ion-label {
+      font-size: 12px;
+      color: white;
+    }
+
+    &.tab-selected {
+      i, ion-label {
+        color: white;
+        opacity: 1;
+      }
+    }
+
+    &:not(.tab-selected) {
+      i, ion-label {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+

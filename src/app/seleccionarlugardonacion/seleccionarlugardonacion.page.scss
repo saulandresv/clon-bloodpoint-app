@@ -1,0 +1,310 @@
+// === GENERAL STYLES (Siguiendo el estilo del index) ===
+ion-content {
+  --background: hsl(0, 76%, 43%);
+  --overflow: hidden;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .ovalo {
+    position: absolute;
+    border-radius: 100%;
+    width: 150%;
+    height: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  .ovalotop {
+    top: 180px;
+    background-color: #cf8686;
+    z-index: -1;
+  }
+
+  .ovalomid {
+    top: 470px;
+    background-color: #e57373;
+    z-index: -2;
+  }
+}
+
+// === SECTION CARDS (Estilo index) ===
+.section-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0.9375rem; // 15px convertido a rem como en index
+  margin: 0.5rem 1rem 1rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  .section-header {
+    background: rgba(255, 255, 255, 0.95);
+    color: #DD4B4B; // Color principal del tema
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0.9375rem 0.9375rem 0 0;
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #DD4B4B;
+      
+      .section-icon {
+        margin-right: 8px;
+        font-size: 1.4rem;
+        color: #DD4B4B;
+      }
+    }
+    
+    ion-card-subtitle {
+      color: #666;
+      margin-top: 4px;
+    }
+  }
+  
+  .section-content {
+    padding: 0;
+  }
+}
+
+// === DETAIL CARD (Estilo index) ===
+.detail-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0.9375rem;
+  margin: 0.5rem 1rem 1rem 1rem;
+  border-left: 4px solid #DD4B4B;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  .detail-header {
+    background: rgba(255, 255, 255, 0.95);
+    color: #DD4B4B;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0.9375rem 0.9375rem 0 0;
+    
+    .detail-title {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #DD4B4B;
+      
+      .detail-icon {
+        margin-right: 8px;
+        font-size: 1.3rem;
+        color: #DD4B4B;
+      }
+    }
+  }
+  
+  .detail-content {
+    padding: 16px;
+  }
+}
+
+// === CENTRO ITEMS (Estilo index) ===
+.centro-item {
+  --border-radius: 8px;
+  margin: 8px 12px;
+  border: 1px solid #e1e5e9;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.9);
+  --background: rgba(255, 255, 255, 0.9);
+  --ripple-color: rgba(221, 75, 75, 0.1);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    --background: rgba(221, 75, 75, 0.05);
+  }
+  
+  &.centro-selected {
+    border-color: #DD4B4B;
+    background: rgba(221, 75, 75, 0.05);
+    
+    .centro-nombre {
+      color: #DD4B4B;
+      font-weight: 600;
+    }
+  }
+  
+  .centro-nombre {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #DD4B4B; // Color principal como en index
+  }
+  
+  .centro-direccion,
+  .centro-detalles,
+  .centro-campanas {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666; // Color secundario como en index
+    margin: 2px 0;
+    
+    ion-icon {
+      margin-right: 6px;
+      color: #DD4B4B;
+    }
+  }
+}
+
+// === CAMPAÑAS SECTIONS ===
+.campanas-section {
+  margin-bottom: 24px;
+  
+  .subsection-title {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #DD4B4B; // Color principal
+    
+    ion-icon {
+      margin-right: 8px;
+      font-size: 1.2rem;
+      color: #DD4B4B;
+    }
+  }
+}
+
+.campana-item {
+  --border-radius: 8px;
+  margin: 6px 0;
+  border: 1px solid #e1e5e9;
+  background: rgba(255, 255, 255, 0.9);
+  --background: rgba(255, 255, 255, 0.9);
+  
+  &.validated {
+    border-left: 4px solid var(--ion-color-success);
+    background: rgba(var(--ion-color-success-rgb), 0.03);
+  }
+  
+  &.pending {
+    border-left: 4px solid var(--ion-color-warning);
+    background: rgba(var(--ion-color-warning-rgb), 0.03);
+  }
+  
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #660000; // Color más oscuro como en index
+  }
+  
+  p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #666;
+  }
+}
+
+// === STATUS STYLES ===
+.status-active {
+  color: var(--ion-color-success);
+  font-weight: 600;
+}
+
+.status-pending {
+  color: var(--ion-color-warning);
+  font-weight: 600;
+}
+
+// === EMPTY STATES ===
+.empty-state,
+.empty-subsection {
+  text-align: center;
+  padding: 32px 16px;
+  color: #666;
+  
+  ion-icon {
+    margin-bottom: 12px;
+    opacity: 0.6;
+    color: #DD4B4B;
+  }
+  
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    color: #666;
+  }
+}
+
+.empty-subsection {
+  padding: 20px 16px;
+  
+  ion-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+}
+
+// === RESPONSIVE DESIGN ===
+@media (max-width: 768px) {
+  .section-card,
+  .detail-card {
+    margin: 12px 8px;
+  }
+  
+  .section-title {
+    font-size: 1.1rem !important;
+  }
+  
+  .detail-title {
+    font-size: 1rem !important;
+  }
+}
+
+// === LOADING STYLES ===
+.ion-padding.ion-text-center {
+  padding-top: 60px;
+  
+  ion-spinner {
+    margin-bottom: 16px;
+    --color: #DD4B4B;
+  }
+  
+  p {
+    color: #666;
+    font-size: 1rem;
+  }
+}
+
+// === ANIMATION CLASSES ===
+.centro-item,
+.campana-item {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Fix content spacing - responsive margin
+ion-content {
+  --padding-top: 8vh;
+}

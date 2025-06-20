@@ -1,0 +1,139 @@
+// Fix content spacing - responsive margin
+ion-content {
+  --padding-top: 8vh;
+}
+
+.center-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  ion-segment-button ion-label {
+    white-space: normal;
+    text-align: center;
+  }
+
+  ion-content {
+    --background: hsl(0, 76%, 43%);
+    position: relative;
+    height: 100%;
+
+    .confirm-button {
+      margin: 20px;
+      font-weight: bold;
+    }
+        
+    .ovalo {
+      position: absolute;
+      border-radius: 100%;
+      width: 150%;
+      height: 95%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .ovalotop {
+      top: 180px;
+      background-color: #cf8686;
+      z-index: -1;
+    }
+
+    .ovalomid {
+      top: 470px;
+      background-color: #e57373;
+      z-index: -2;
+    }
+
+    .header-section {
+      padding: 20px 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+
+      ion-back-button {
+        --color: white;
+        --padding-start: 0;
+        --padding-end: 0;
+        --icon-font-size: 24px;
+        --icon-margin-end: 0;
+        --margin-start: 0;
+        --margin-end: 0;
+        --min-width: 24px;
+        --min-height: 24px;
+      }
+
+      h1 {
+        color: white;
+        font-size: 32px;
+        margin: 0;
+      }
+    }
+
+    .details-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      margin: 16px;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 20px;
+
+        i {
+          color: #b93636;
+          font-size: 24px;
+          width: 24px;
+          text-align: center;
+        }
+
+        .info-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+
+          .label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 4px;
+          }
+
+          .value {
+            color: #333;
+            font-size: 16px;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 8px;
+    background-color: #ff4444;
+    color: white;
+    
+    &.open {
+      background-color: #00C851;
+    }
+  }
+
+.custom-thumbnail {
+  // ... existing code ...
+}
+

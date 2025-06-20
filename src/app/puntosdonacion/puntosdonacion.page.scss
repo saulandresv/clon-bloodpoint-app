@@ -1,0 +1,495 @@
+// Fix content spacing - responsive margin
+ion-content {
+  --padding-top: 8vh;
+}
+
+ion-content {
+    --background: #ffffff;
+    
+    .title-section {
+      text-align: center;
+      padding: 20px 16px;
+      background: #fff;
+      
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #DD4B4B;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+    }
+    
+    .center-wrapper {
+      padding: 16px;
+      background: #fff2f2;
+      border-radius: 25px;
+      margin: 16px;
+
+      ion-searchbar {
+        --background: #fff2f2;
+        --border-radius: 20px;
+        --placeholder-color: #666;
+        --icon-color: #666;
+        --color: #000;
+      }
+    }
+
+    ion-grid {
+      ion-col {
+        ion-item {
+          --background: #fff2f2;
+          border-radius: 25px;
+          margin: 8px;
+
+          ion-select {
+            --placeholder-color: #666;
+            --color: #333333;
+            width: 100%;
+            padding: 8px;
+
+            &::part(text) {
+              color: #333333;
+            }
+
+            &::part(icon) {
+              color: #666666;
+            }
+          }
+        }
+      }
+    }
+
+    .center-toggle {
+      padding: 0 16px;
+      margin: 16px 0;
+
+      ion-item {
+        --background: transparent;
+        
+        ion-label {
+          font-weight: 500;
+          color: #333333;
+        }
+
+        ion-toggle {
+          --background: #fff2f2;
+          --background-checked: #e57373;
+          --handle-background: #fff;
+          --handle-background-checked: #fff;
+        }
+      }
+    }
+
+    ion-list {
+      background: transparent;
+      padding: 16px;
+
+      ion-item {
+        --background: #fff2f2;
+        border-radius: 15px;
+        margin-bottom: 16px;
+
+        ion-label {
+          h3 {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+          }
+
+          p {
+            color: #666;
+            margin: 4px 0;
+
+            i {
+              margin-right: 8px;
+              
+              &.fa-location-dot {
+                color: #DD4B4B;
+              }
+            }
+          }
+
+          ion-button {
+            --background: #e57373;
+            --border-radius: 20px;
+            --padding-start: 24px;
+            --padding-end: 24px;
+            margin-top: 8px;
+
+            &[disabled] {
+              --background: #cccccc;
+            }
+          }
+
+          .fa-circle {
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+
+    .reset-button-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 8px 16px;
+      margin-bottom: 8px;
+
+      ion-button {
+        --color: #DD4B4B;
+        font-size: 14px;
+        
+        &[disabled] {
+          --color: #999;
+        }
+
+        ion-icon {
+          margin-right: 4px;
+        }
+      }
+    }
+
+    .filter-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 16px;
+      gap: 8px;
+
+      .open-toggle-wrapper,
+      .reset-button-wrapper {
+        width: 100%;
+        
+        ion-button {
+          width: 100%;
+          --color: #DD4B4B;
+          font-size: 14px;
+          justify-content: space-between;
+          
+          &[disabled] {
+            --color: #999;
+          }
+
+          ion-icon {
+            margin-right: 4px;
+          }
+
+          ion-toggle {
+            --background: #f5f5f5;
+            --background-checked: #DD4B4B;
+            --handle-background: white;
+            --handle-background-checked: white;
+            margin: 0;
+            padding-left: 8px;
+          }
+        }
+      }
+    }
+  }
+
+// Add this to your HTML header
+ion-toolbar {
+  --background: #ffffff;
+}
+
+// Also update the popover interface styling globally
+::ng-deep .select-interface-option {
+  --color: #333333 !important;
+  
+  .select-interface-option-text {
+    color: #333333;
+  }
+}
+
+// Style for the select options popover
+:host ::ng-deep .select-interface-option {
+  --color: #333333 !important;
+  --background: #fff2f2 !important;
+  
+  &.select-interface-option-selected {
+    --background: #e57373 !important;
+    --color: #ffffff !important;
+  }
+}
+
+ion-select::part(placeholder),
+ion-select::part(text) {
+  color: #333333;
+}
+
+.alert-radio-label.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-ios {
+  color: #333333;
+}
+
+.select-interface-option .select-interface-option-text {
+  color: #333333;
+}
+
+ion-alert.select-alert {
+  .alert-wrapper {
+    background: #fff2f2;
+    
+    .alert-head {
+      color: #333333;
+    }
+    
+    .alert-radio-group {
+      .alert-radio-label {
+        color: #333333;
+      }
+    }
+  }
+}
+
+.select-item {
+  ion-select {
+    --placeholder-color: #666;
+    
+    &::part(placeholder),
+    &::part(text) {
+      color: #333;
+    }
+  }
+}
+
+// Add these styles for the popover interface
+::ng-deep .select-interface-option {
+  --background: white;
+  --color: #333;
+  
+  .select-interface-option {
+    background: white;
+    color: #333;
+  }
+
+  .select-interface-option:hover {
+    --background: #f5f5f5;
+    background: #f5f5f5;
+  }
+}
+
+::ng-deep ion-popover {
+  --border-radius: 8px;
+  --box-shadow: 0 2px 8px rgba(185, 54, 54, 0.1);
+  
+  .popover-content {
+    border: 1px solid hsl(0, 76%, 43%);
+  }
+
+  .popover-viewport {
+    background: white;
+  }
+
+  ion-item {
+    --border-color: rgba(185, 54, 54, 0.2);
+    --border-width: 0 0 1px 0;
+    --inner-padding-end: 16px;
+
+    &:last-child {
+      --border-width: 0;
+    }
+
+    &:hover {
+      --background: rgba(185, 54, 54, 0.05);
+    }
+  }
+
+  ion-select-option {
+    color: #333;
+    font-size: 16px;
+  }
+}
+
+::ng-deep ion-popover {
+  --background: white;
+  --width: 280px;
+  --width: min(280px, 90vw);
+  --max-height: 60vh;
+  --offset-y: 10px;
+  
+  &.select-popover {
+    --min-width: 200px;
+    margin-bottom: 56px; // Height of the footer bar
+    
+    .popover-content {
+      max-height: calc(100vh - 120px); // Account for header and footer
+      overflow-y: auto;
+    }
+    
+    @media (max-height: 600px) {
+      --max-height: 40vh;
+    }
+  }
+  
+  .popover-viewport {
+    max-height: inherit;
+    overflow-y: auto;
+  }
+    
+  ion-list {
+    background: white !important;
+    padding: 0;
+    margin: 0;
+  }
+    
+  ion-item {
+    --background: white;
+    --color: #333333;
+      
+    &:hover {
+      --background: #fff2f2;
+    }
+      
+    &.item-selected {
+      --background: #fff2f2;
+      color: #DD4B4B;
+      font-weight: 500;
+    }
+  }
+}
+
+::ng-deep {
+  .popover-content {
+    --background: white !important;
+  }
+
+  .select-interface-option {
+    --background: white;
+    --color: #333333;
+    
+    &:hover {
+      --background: #fff2f2;
+    }
+  }
+
+  .popover-content {
+    --background: white;
+    --width: 280px;
+  }
+
+  ion-select-popover {
+    ion-list {
+      background: white;
+      
+      ion-item {
+        --background: white;
+        color: #333333;
+        
+        &:hover {
+          --background: #fff2f2;
+        }
+
+        &.item-selected {
+          --background: #fff2f2;
+          color: #DD4B4B;
+        }
+      }
+    }
+  }
+}
+
+ion-select {
+  &[disabled] {
+    opacity: 0.5;
+    --placeholder-color: #999;
+    
+    &::part(text), 
+    &::part(icon) {
+      opacity: 0.5;
+    }
+  }
+}
+
+.fixed-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: white;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.scrollable-content {
+  margin-top: 8px;
+  height: calc(100% - var(--fixed-header-height));
+  overflow-y: auto;
+}
+
+.center-item {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  --background: #fff;
+  --border-color: #ddd;
+
+  .center-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+    h2 {
+      margin: 0;
+      color: #DD4B4B;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .distance {
+      color: #666;
+      font-size: 14px;
+      
+      i {
+        color: #DD4B4B;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .address {
+    margin: 4px 0;
+    color: #333;
+  }
+
+  .commune {
+    margin: 4px 0;
+    
+    i {
+      color: #666;
+      margin-right: 8px;
+    }
+  }
+
+  .contact {
+    margin: 4px 0;
+    
+    i {
+      color: #666;
+      margin-right: 8px;
+    }
+  }
+
+  ion-button {
+    margin-top: 8px;
+    --background: #DD4B4B;
+    --color: #ffffff;
+    --ripple-color: rgba(255, 255, 255, 0.2);
+    
+    &:hover {
+      --background: #c23e3e;
+      --color: #ffffff;
+    }
+
+    &::part(native) {
+      color: #ffffff;
+    }
+  }
+}
+
+:host ::ng-deep ion-button.button-solid {
+  --color: #ffffff;
+  --background: #DD4B4B;
+  --background-activated: #c23e3e;
+  --background-focused: #c23e3e;
+}

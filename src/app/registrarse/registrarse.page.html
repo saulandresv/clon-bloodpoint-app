@@ -1,0 +1,206 @@
+<ion-header [translucent]="true">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <div class="logo-container">
+    <img src="assets/images/registrar.png" alt="BloodPoint Logo" class="logo-image">
+    <h1 class="register-title">Registrarte</h1>
+  </div>
+
+  <ion-card>
+    <form (ngSubmit)="registrarDonante(formData)" #form="ngForm">
+      <ion-list>
+        <!-- Item RUT -->
+        <ion-item>
+          <ion-input 
+            name="rut"
+            [(ngModel)]="formData.rut"
+            (ngModelChange)="formatearRut($event)"
+            labelPlacement="stacked" 
+            [clearInput]="true" 
+            label="RUT" 
+            placeholder="12.345.678-9">
+          </ion-input>
+        </ion-item>
+
+        <!-- Item Name -->
+        <ion-item>
+          <ion-input 
+            name="nombreCompleto"
+            [(ngModel)]="formData.nombreCompleto"
+            labelPlacement="stacked" 
+            [clearInput]="true" 
+            label="Nombre Completo" 
+            placeholder="John Doe"
+            required>
+          </ion-input>
+        </ion-item>
+        <div *ngIf="form.submitted && !formData.nombreCompleto">
+          <ion-text color="danger">El nombre completo es obligatorio.</ion-text>
+        </div>
+
+        <!-- Item Birth -->
+        <ion-item>
+          <ion-label position="stacked">Fecha de nacimiento</ion-label>
+          <ion-input 
+            name="fechaNacimiento"
+            [(ngModel)]="formData.fechaNacimiento"
+            type="date" 
+            placeholder="Selecciona una fecha"
+            required>
+          </ion-input>
+        </ion-item>
+        <div *ngIf="formData.fechaNacimiento && !esMayorDeEdad(formData.fechaNacimiento)">
+          <ion-text color="danger">Debes ser mayor de 18 años para registrarte.</ion-text>
+        </div>
+
+        <!-- Email and Password Section -->
+        <ion-item>
+          <ion-input 
+            name="correoElectronico"
+            [(ngModel)]="formData.correoElectronico"
+            labelPlacement="stacked" 
+            [clearInput]="true" 
+            label="Correo Electrónico" 
+            placeholder="bloodpoint@domain.com"
+            required>
+          </ion-input>
+        </ion-item>
+        <div *ngIf="form.submitted && !formData.correoElectronico">
+          <ion-text color="danger">El correo electrónico es obligatorio.</ion-text>
+        </div>
+        <div *ngIf="formData.correoElectronico && !esCorreoValido(formData.correoElectronico)">
+          <ion-text color="danger">El correo ingresado no es válido.</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-input 
+            name="password"
+            [(ngModel)]="formData.password"
+            labelPlacement="stacked"
+            type="password"
+            label="Contraseña"
+            placeholder="Ingrese su contraseña"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            name="repetirPassword"
+            [(ngModel)]="formData.repetirPassword"
+            labelPlacement="stacked"
+            type="password"
+            label="Repetir contraseña"
+            placeholder="Repita su contraseña"
+            required>
+          </ion-input>
+        </ion-item>
+        
+        <!-- Ocupación -->
+        <ion-item>
+          <ion-select 
+            name="ocupacion"
+            [(ngModel)]="formData.ocupacion"
+            label="Ocupación"
+            placeholder="Selecciona tu ocupación"
+            required>
+            <ion-select-option value="estudiante">Estudiante</ion-select-option>
+            <ion-select-option value="trabajador">Trabajador</ion-select-option>
+            <ion-select-option value="jubilado">Jubilado</ion-select-option>
+            <ion-select-option value="otro">Otro</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Personal Info Section -->
+        <ion-grid [fixed]="true">
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-select 
+                  name="sexo"
+                  [(ngModel)]="formData.sexo"
+                  label="Género Biológico"
+                  required>
+                  <ion-select-option value="H">Masculino</ion-select-option>
+                  <ion-select-option value="M">Femenino</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-input 
+                  name="telefono"
+                  [(ngModel)]="formData.telefono"
+                  labelPlacement="stacked" 
+                  [clearInput]="true" 
+                  label="Teléfono" 
+                  type="tel" 
+                  placeholder="9-0000-0000"
+                  required>
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <!-- Blood Type -->
+        <ion-item>
+          <ion-select 
+            name="tipoSangre"
+            [(ngModel)]="formData.tipoSangre"
+            label="Tipo de sangre"
+            required>
+            <ion-select-option value="O-">O -</ion-select-option>
+            <ion-select-option value="O+">O +</ion-select-option>
+            <ion-select-option value="A-">A -</ion-select-option>
+            <ion-select-option value="A+">A +</ion-select-option>
+            <ion-select-option value="B-">B -</ion-select-option>
+            <ion-select-option value="B+">B +</ion-select-option>
+            <ion-select-option value="AB-">AB -</ion-select-option>
+            <ion-select-option value="AB+">AB +</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Checkboxes -->
+        <ion-item lines="none">
+          <ion-checkbox 
+            name="nuevoDonante"
+            [(ngModel)]="formData.nuevoDonante"
+            labelPlacement="end">
+            ¿Es su primera vez donando sangre?
+          </ion-checkbox>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-checkbox 
+            name="aceptaTerminos"
+            [(ngModel)]="formData.aceptaTerminos"
+            labelPlacement="end"
+            required>
+            Acepto los términos y condiciones
+          </ion-checkbox>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-checkbox 
+            name="recibirNotificaciones"
+            [(ngModel)]="formData.recibirNotificaciones"
+            labelPlacement="end">
+            Recibir notificaciones de campañas
+          </ion-checkbox>
+        </ion-item>
+
+        <!-- Submit Button -->
+        <ion-button type="submit" expand="block" class="register-button">
+          Registrarse
+        </ion-button>
+      </ion-list>
+    </form>
+  </ion-card>
+</ion-content>

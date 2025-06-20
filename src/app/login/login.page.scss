@@ -1,0 +1,128 @@
+ion-content {
+    --background: #ffffff
+}
+
+
+.blood-drop-container {
+    background-color: #e57373;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    
+    .characters {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 600px;
+      margin: 0 auto;
+      
+      img {
+        width: 100px;
+        height: auto;
+      }
+      
+      .heart-icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        
+        ion-icon {
+          font-size: 2rem;
+        }
+
+        ion-input-password-toggle {
+            --color: #808080;
+          }
+      }
+    }
+    
+    .save-life-text {
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      line-height: 1.2;
+      text-align: left;
+    }
+  }
+  
+  ion-card {
+    margin: 0 16px;
+    --background: transparent;
+    box-shadow: none;
+
+    ion-card-content {
+      ion-list {
+          background: transparent;
+          margin-top: 8px;
+      }
+      ion-item {
+        --background: #f5dfdf;
+        --border-radius: 10px;
+        margin-bottom: 10px;
+        
+        ion-input {
+          --color: #000;
+          --placeholder-color: #666;
+        }
+      }
+
+      ion-button[type="submit"] {
+        --background: #e57373;
+        --color: white;
+        margin: 20px 0;
+      }
+
+      ion-button[fill="clear"] {
+        --color: #e57373;
+      }
+
+      padding: 16px;
+    }
+  }
+
+.error-message {
+  color: #e57373;
+  font-size: 0.8rem;
+  margin: 5px 0 10px 16px;
+}
+
+ion-segment {
+  --background: #f5dfdf;
+  margin: 16px 0;
+  padding: 4px;
+  border-radius: 20px;
+  
+  ion-segment-button {
+    --background: transparent;
+    --background-checked: #e57373;
+    --color: #666666;
+    --color-checked: #ffffff;
+    --border-radius: 16px;
+    --border-color: transparent;
+    --border-style: none;
+    --indicator-color: transparent;
+    --margin-top: 0;
+    --margin-bottom: 0;
+    min-height: 40px;
+    text-transform: none;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 40px;
+    transition: all 0.3s ease;
+    
+    &::part(indicator) {
+      display: none;
+    }
+    
+    &.segment-button-checked {
+      font-weight: 500;
+    }
+    
+    &:not(.segment-button-checked) {
+      opacity: 0.8;
+    }
+  }
+}

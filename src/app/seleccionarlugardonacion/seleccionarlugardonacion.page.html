@@ -1,0 +1,154 @@
+
+
+<ion-content [fullscreen]="true">
+  <!-- Óvalos de fondo como en index -->
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="ion-padding ion-text-center">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <p>Cargando datos del representante...</p>
+  </div>
+
+  <!-- Error State - No Representante -->
+  <div *ngIf="!loading && !isRepresentante" class="ion-padding">
+    <ion-card color="danger">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="alert-circle" slot="start"></ion-icon>
+          Acceso Restringido
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Solo los representantes pueden acceder a esta sección.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Main Content for Representatives -->
+  <div *ngIf="!loading && isRepresentante">
+    
+    <!-- SECCIÓN 1: CENTROS DEL REPRESENTANTE -->
+    <ion-card class="section-card">
+      <ion-card-header class="section-header">
+        <ion-card-title class="section-title">
+          <ion-icon name="business" class="section-icon"></ion-icon>
+          Mis Centros de Donación
+        </ion-card-title>
+        <ion-card-subtitle>
+          Centros asociados a mi cuenta ({{ centrosDelRepresentante.length }})
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="section-content">
+        <!-- Lista de Centros -->
+        <div *ngIf="centrosDelRepresentante.length > 0; else noCentros">
+          <ion-item *ngFor="let centro of centrosDelRepresentante" 
+                    class="centro-item"
+                    (click)="seleccionarCentro(centro)"
+                    [class.centro-selected]="selectedCentro?.id_centro === centro.id_centro">
+            
+            <ion-icon name="location" slot="start" color="primary"></ion-icon>
+            
+        <ion-label>
+              <h2 class="centro-nombre">{{ centro.nombre_centro }}</h2>
+              <p class="centro-direccion">
+                <ion-icon name="pin" size="small"></ion-icon>
+                {{ centro.direccion_centro }}
+              </p>
+              <p class="centro-detalles" *ngIf="centro.horario_apertura && centro.horario_cierre">
+                <ion-icon name="time" size="small"></ion-icon>
+                {{ centro.horario_apertura }} - {{ centro.horario_cierre }}
+          </p>
+              <p class="centro-campanas">
+                <ion-icon name="calendar" size="small"></ion-icon>
+                {{ centro.campanas?.length || 0 }} campañas asociadas
+              </p>
+            </ion-label>
+
+            <ion-button fill="clear" slot="end" size="small">
+              <ion-icon name="chevron-forward"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </div>
+
+        <ng-template #noCentros>
+          <div class="empty-state">
+            <ion-icon name="business-outline" size="large" color="medium"></ion-icon>
+            <p>No tienes centros de donación asociados</p>
+          </div>
+        </ng-template>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- DETALLES DEL CENTRO SELECCIONADO -->
+    <ion-card *ngIf="selectedCentro" class="detail-card">
+      <ion-card-header class="detail-header">
+        <ion-card-title class="detail-title">
+          <ion-icon name="information-circle" class="detail-icon"></ion-icon>
+          {{ selectedCentro.nombre_centro }}
+        </ion-card-title>
+        <ion-card-subtitle>Gestión de campañas</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="detail-content">
+        <!-- Campañas Validadas -->
+        <div class="campanas-section">
+          <h3 class="subsection-title">
+            <ion-icon name="checkmark-circle" color="success"></ion-icon>
+            Campañas Activas ({{ campanasValidadas.length }})
+          </h3>
+          
+          <div *ngIf="campanasValidadas.length > 0; else noCampanasValidadas">
+            <ion-item *ngFor="let campana of campanasValidadas" class="campana-item validated">
+              <ion-icon name="calendar" slot="start" color="success"></ion-icon>
+              <ion-label>
+                <h3>{{ campana.nombre_campana }}</h3>
+                <p>Estado: <span class="status-active">Activa</span></p>
+              </ion-label>
+              <ion-button fill="outline" color="medium" size="small" slot="end">
+                Ver Detalles
+              </ion-button>
+            </ion-item>
+          </div>
+
+          <ng-template #noCampanasValidadas>
+            <div class="empty-subsection">
+              <ion-icon name="calendar-outline" color="medium"></ion-icon>
+              <p>No hay campañas activas</p>
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- Campañas Pendientes de Validación -->
+        <div class="campanas-section" *ngIf="campanasNoValidadas.length > 0">
+          <h3 class="subsection-title">
+            <ion-icon name="time" color="warning"></ion-icon>
+            Campañas Pendientes ({{ campanasNoValidadas.length }})
+          </h3>
+          
+          <ion-item *ngFor="let campana of campanasNoValidadas" class="campana-item pending">
+            <ion-icon name="calendar" slot="start" color="warning"></ion-icon>
+            <ion-label>
+              <h3>{{ campana.nombre_campana }}</h3>
+              <p>Estado: <span class="status-pending">Pendiente de validación</span></p>
+        </ion-label>
+            <ion-button 
+              fill="solid" 
+              color="success" 
+              size="small" 
+              slot="end"
+              (click)="validarCampana(campana.id_campana)">
+              <ion-icon name="checkmark" slot="start"></ion-icon>
+              Validar
+        </ion-button>
+      </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    
+
+  </div>
+</ion-content>

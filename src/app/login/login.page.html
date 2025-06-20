@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Mantener la sección de imagen y texto -->
+  <div class="blood-drop-container">
+    <h1 class="save-life-text">Una gota<br>puede salvar<br>una vida.</h1>
+    <div class="characters">
+      <img src="assets/images/login_1.png" alt="Donante" class="donor-image">
+      <div class="heart-icon">
+        <ion-icon name="heart" color="danger"></ion-icon>
+      </div>
+      <img src="assets/images/login_3.png" alt="Bolsa de sangre" class="blood-bag-image">
+    </div>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+        <ion-list>
+          <!-- Selector tipo de usuario -->
+          <ion-segment [(ngModel)]="tipoUsuario" [ngModelOptions]="{standalone: true}" value="donante">
+            <ion-segment-button value="donante">Donante</ion-segment-button>
+            <ion-segment-button value="representante">Representante</ion-segment-button>
+          </ion-segment>
+
+          <!-- Donante: Campo de RUT -->
+          <ng-container *ngIf="tipoUsuario === 'donante'">
+            <ion-item>
+              <ion-input 
+                labelPlacement="stacked" 
+                label="RUT" 
+                placeholder="12.345.678-9"
+                [(ngModel)]="credentials.rut"
+                (ngModelChange)="formatearRut($event)"
+                name="rut"
+                required
+                #rut="ngModel">
+              </ion-input>
+            </ion-item>
+            <div *ngIf="rut.invalid && (rut.dirty || rut.touched)" class="error-message">
+              <ion-text color="danger">El RUT es requerido</ion-text>
+            </div>
+            <div *ngIf="credentials.rut && !validarRut(credentials.rut)" class="error-message">
+              <ion-text color="danger">El RUT ingresado no es válido</ion-text>
+            </div>
+          </ng-container>
+
+          <!-- Representante: Campo de Email -->
+          <ng-container *ngIf="tipoUsuario === 'representante'">
+            <ion-item>
+              <ion-input 
+                labelPlacement="stacked" 
+                label="Correo electrónico" 
+                placeholder="correo@ejemplo.com"
+                [(ngModel)]="credentials.email"
+                name="email"
+                required
+                type="email"
+                #email="ngModel">
+              </ion-input>
+            </ion-item>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+              <ion-text color="danger">El correo es requerido</ion-text>
+            </div>
+          </ng-container>
+
+          <!-- Item Password -->
+          <ion-item>
+            <ion-input 
+              labelPlacement="stacked" 
+              type="password" 
+              label="Contraseña"
+              [(ngModel)]="credentials.password"
+              name="password"
+              required
+              #password="ngModel">
+              <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+            </ion-input>
+          </ion-item>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+            <ion-text color="danger">Contraseña es requerida</ion-text>
+          </div>
+          <div *ngIf="credentials.password && credentials.password.length < 8" class="error-message">
+            <ion-text color="danger">La contraseña debe tener al menos 8 caracteres</ion-text>
+          </div>
+        </ion-list>
+        
+        <!-- Item Boton Iniciar Sesion -->
+        <ion-button expand="block" type="submit" [disabled]="loginForm.invalid">
+          Iniciar Sesion
+        </ion-button>
+        
+        <!-- Item Nav/Routerlink -->
+        <div style="display: flex; justify-content: center; gap: 16px; margin-top: 16px;">
+          <ion-button [routerLink]="['/registrarse']" fill="clear">Registrarse</ion-button>
+          <ion-button fill="clear" (click)="abrirRecuperarContrasena()">Recuperar Contraseña</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

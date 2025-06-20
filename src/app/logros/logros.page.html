@@ -1,0 +1,43 @@
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mis logros</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <h2>Total donado: 1800mL</h2>
+    <h2>Estimacion de vidas salvadas: 9</h2>
+  </div>
+
+  <!-- Achievements List -->
+  <div class="achievements-list">
+    <ng-container *ngIf="achievements.length; else noLogros">
+      <div *ngFor="let logro of achievements" class="achievement-item" [ngClass]="{ 'locked': !logro.user_completed }">
+        <div class="status-circle">
+          <i class="fas" [ngClass]="logro.user_completed ? 'fa-check' : 'fa-lock'"></i>
+        </div>
+        <div class="achievement-content">
+          <i class="fa-solid" [ngClass]="logro.symbol"></i>
+          <span>{{ logro.name }}</span>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noLogros>
+      <p class="ion-text-center">Aún no tienes logros.</p>
+    </ng-template>
+  </div>
+
+  <!-- Share Button -->
+  <ion-button expand="block" class="share-button" (click)="share()">
+    compartir mis logros
+  </ion-button>
+</ion-content>

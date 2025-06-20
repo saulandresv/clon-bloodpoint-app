@@ -1,0 +1,128 @@
+// Fix content spacing - responsive margin
+ion-content {
+  --padding-top: 8vh;
+}
+
+.custom-thumbnail {
+    width: 60px; // Tamaño estándar de ion-thumbnail
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .custom-thumbnail i {
+    font-size: 26px; // Ajusta esto según necesites que se vea más grande o más pequeño
+  }
+
+ion-content {
+  --background: hsl(0, 76%, 43%);
+  position: relative;
+  height: 100%;
+
+  .ovalo {
+    position: absolute;
+    border-radius: 100%;
+    width: 150%;
+    height: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  .ovalotop {
+    top: 180px;
+    background-color: #cf8686;
+    z-index: -1;
+  }
+
+  .ovalomid {
+    top: 470px;
+    background-color: #e57373;
+    z-index: -2;
+  }
+
+
+
+  .stats-section {
+    text-align: center;
+    color: white;
+    margin: 20px 0 40px;
+    position: relative;
+    z-index: 1;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 300;
+      margin: 8px 0;
+    }
+  }
+
+  .achievements-list {
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+
+    .achievement-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+
+      .status-circle {
+        width: 36px;
+        height: 36px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          color: #b93636;
+          font-size: 16px;
+        }
+      }
+
+      .achievement-content {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        i {
+          font-size: 24px;
+          color: white;
+          width: 30px;
+        }
+
+        span {
+          color: white;
+          font-size: 20px;
+        }
+      }
+
+      &.locked {
+        opacity: 0.7;
+
+        .status-circle {
+          background: rgba(255, 255, 255, 0.3);
+          
+          i {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .share-button {
+    --background: rgba(255, 255, 255, 0.2);
+    --color: white;
+    --border-radius: 25px;
+    margin: 32px 20px;
+    height: 48px;
+    text-transform: none;
+    font-size: 18px;
+    --box-shadow: none;
+  }
+}

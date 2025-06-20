@@ -1,0 +1,120 @@
+<ion-header [translucent]="true">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+
+  <!-- Header with back button -->
+  <div class="header-section">
+    <ion-back-button defaultHref="/menu/perfil" text="" icon="arrow-back"></ion-back-button>
+  </div>
+
+  <!-- Header Message -->
+  <div class="header-message">
+    <div class="icon-circle">
+      <i class="fa-solid fa-droplet"></i>
+    </div>
+    <div class="message-content">
+      <h1>¡Necesito donantes de sangre!</h1>
+      <p>Cuéntanos sobre el tipo de sangre y otros detalles relevantes.</p>
+    </div>
+  </div>
+
+  <!-- Form Fields -->
+  <div class="form-container">
+
+    <ion-item>
+      <ion-select label="Tipo de sangre" interface="action-sheet" [(ngModel)]="formulario.tipo_sangre_sol" name="tipo_sangre_sol">
+        <ion-select-option value="O -">O -</ion-select-option>
+        <ion-select-option value="O +">O +</ion-select-option>
+        <ion-select-option value="A -">A -</ion-select-option>
+        <ion-select-option value="A +">A +</ion-select-option>
+        <ion-select-option value="B -">B -</ion-select-option>
+        <ion-select-option value="B +">B +</ion-select-option>
+        <ion-select-option value="AB -">AB -</ion-select-option>
+        <ion-select-option value="AB +">AB +</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input 
+        label="Cantidad solicitada" 
+        type="number"
+        min="1"
+        max="100"
+        placeholder="Número de personas"
+        [(ngModel)]="formulario.cantidad_personas"
+        name="cantidad_personas">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select
+        label="Centro de donación"
+        interface="action-sheet"
+        [(ngModel)]="formulario.centro_donacion"
+        name="centro_donacion"
+        (ionChange)="onCentroSeleccionado()">
+        
+        <ion-select-option
+          *ngFor="let centro of centros"
+          [value]="centro.id_centro">
+          {{ centro.nombre_centro }} - {{ centro.comuna }}
+        </ion-select-option>
+        
+      </ion-select>
+    </ion-item>
+
+    <!-- Información automática del centro -->
+    <div *ngIf="formulario.centro_donacion" class="centro-info">
+      <ion-item lines="none">
+        <ion-label>
+          <h3>📍 Ubicación del centro</h3>
+          <p>{{ formulario.comuna_solicitud }}, {{ formulario.ciudad_solicitud }}</p>
+          <p><small>{{ formulario.region_solicitud }}</small></p>
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <!-- Fechas en formato compacto -->
+    <ion-item>
+      <ion-input
+        label="Fecha de inicio"
+        type="date"
+        [min]="fechaMinima"
+        [(ngModel)]="formulario.fecha_solicitud"
+        name="fecha_solicitud">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Fecha de término"
+        type="date"
+        [min]="fechaMinima"
+        [(ngModel)]="formulario.fecha_termino"
+        name="fecha_termino">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea
+        label="Información adicional"
+        placeholder="Describa la situación médica o motivo de la solicitud (máximo 500 caracteres)..."
+        maxlength="500"
+        [(ngModel)]="formulario.descripcion_solicitud"
+        name="descripcion_solicitud"
+        [autoGrow]="true"
+        rows="4">
+      </ion-textarea>
+    </ion-item>
+  </div>
+
+  <!-- Submit Button -->
+  <ion-button expand="block" class="submit-button" (click)="publicarSolicitud()">
+    Publicar
+  </ion-button>  
+</ion-content>

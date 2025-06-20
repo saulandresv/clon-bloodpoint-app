@@ -1,0 +1,104 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+
+
+<ion-content [fullscreen]="true">
+  <!-- Fondos ovalados -->
+  <div class="ovalo ovalotop"></div>
+  <div class="ovalo ovalomid"></div>
+  <div class="blood-header">
+    <h1>BloodPoint</h1>
+  </div>
+  <!-- Contenedor del mapa -->
+  <div class="map-container">
+    <div id="map"></div>
+    
+    <!-- Notificación de sangre dinámica 
+    <div class="blood-notification">
+      <div class="notification-content">
+        <ion-icon name="water"></ion-icon>
+        <span>¡Se necesita sangre O+ en Centro de Donación A!</span>
+        <ion-button fill="clear" color="light">
+          <p style="color: white; text-decoration: underline;">Ver más</p>
+        </ion-button>
+      </div>
+    </div>-->
+
+      <!-- Botón para añadir nuevo centro, solo si el usuario es representante -->
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="isRepresentante">
+      <ion-fab-button (click)="abrirFormularioCampana()"      >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+  <div class="qr-button-container">
+    <ion-button expand="block" class="qr-button" (click)="mostrarQR()" *ngIf="!isRepresentante">
+      <i class="fa-solid fa-qrcode"></i>
+      <span>Ver Perfil QR</span>
+    </ion-button>
+  
+    <ion-button expand="block" class="qr-button" (click)="escanearQR()" *ngIf="isRepresentante">
+      <i class="fa-solid fa-camera"></i>
+      <span>Escanear QR Donante</span>
+    </ion-button>
+  </div>
+
+  <ion-card *ngIf="isRepresentante" class="campaigns-card">
+    <ion-card-header class="campaigns-header">
+      <ion-card-title class="campaigns-title">
+        <ion-icon name="calendar-outline" class="title-icon"></ion-icon>
+        Campañas Disponibles
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="campaigns-content">
+      <ng-container *ngIf="campanasDisponibles.length > 0; else noCampanas">
+        <div class="campaigns-table-container">
+          <table class="campaigns-table">
+            <thead>
+              <tr>
+                <th class="header-name">Nombre de la Campaña</th>
+                <th class="header-action">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let campana of campanasDisponibles" 
+                  class="campaign-row"
+                  [class.campaign-selected]="campana.selected"
+                  (click)="toggleCampanaSelection(campana)">
+                <td class="campaign-name-cell">
+                  <div class="campaign-name-content">
+                    <ion-icon name="megaphone-outline" class="campaign-icon"></ion-icon>
+                    <span class="campaign-name-text">{{ campana.nombre_campana }}</span>
+                  </div>
+                </td>
+                <td class="campaign-action-cell">
+                  <ion-button 
+                    class="campaign-button"
+                    [class.selected-button]="campana.selected"
+                    size="small" 
+                    fill="solid"
+                    (click)="seleccionarCampana(campana); $event.stopPropagation()">
+                    <ion-icon [name]="campana.selected ? 'checkmark-circle' : 'radio-button-off'" 
+                              slot="start" class="button-icon"></ion-icon>
+                    {{ campana.selected ? 'Seleccionada' : 'Seleccionar' }}
+              </ion-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+  
+      <ng-template #noCampanas>
+        <div class="no-campaigns-container">
+          <ion-icon name="calendar-clear-outline" class="no-campaigns-icon"></ion-icon>
+          <p class="no-campaigns-text">No tienes campañas activas disponibles</p>
+          <p class="no-campaigns-subtitle">Crea una nueva campaña para comenzar</p>
+        </div>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

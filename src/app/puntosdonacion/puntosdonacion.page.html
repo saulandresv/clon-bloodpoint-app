@@ -1,0 +1,97 @@
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Donde donar</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Fixed Header Section -->
+  <div class="fixed-header">
+    <!-- Ubicación-->
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col>
+          <ion-item class="select-item">
+            <ion-select class="select-popover"
+                       [(ngModel)]="selectedLocation" 
+                       (ionChange)="filterByLocation()"
+                       placeholder="Ubicación" 
+                       interface="popover">
+              <ion-select-option *ngFor="let address of availableLocations" 
+                                [value]="address">
+                {{address}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <!-- Filtro por tipo de lugar (movido aquí) -->
+          <ion-item class="select-item">
+            <ion-select [(ngModel)]="selectedTipoLugar" (ionChange)="filterCenters()" placeholder="Tipo de lugar">
+              <ion-select-option value="todos">Todos</ion-select-option>
+              <ion-select-option value="punto">Punto de Donación</ion-select-option>
+              <ion-select-option value="campana">Campaña</ion-select-option>
+              <ion-select-option value="solicitud">Solicitud</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Acciones de filtro -->
+    <div class="filter-actions">
+      <div class="open-toggle-wrapper">
+        <ion-button fill="clear" size="small" (click)="toggleOpenOnly()">
+          <ion-icon [name]="showOnlyOpen ? 'time' : 'time-outline'" slot="start"></ion-icon>
+          Mostrar solo abiertos
+          <ion-toggle [(ngModel)]="showOnlyOpen" (ionChange)="filterCenters()" (click)="$event.stopPropagation()" slot="end"></ion-toggle>
+        </ion-button>
+      </div>
+      
+      <div class="reset-button-wrapper">
+        <ion-button fill="clear" size="small" (click)="resetFilters()" [disabled]="!selectedLocation && !showOnlyOpen">
+          <ion-icon name="refresh-outline" slot="start"></ion-icon>
+          Limpiar filtros
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido desplazable -->
+  <div class="scrollable-content">
+    <ion-list>
+      <ion-item *ngFor="let center of filteredCenters" class="center-item" 
+                (click)="showDetails(center.id_centro)"
+                button="true">
+        <ion-label>
+          <div class="center-header">
+            <h2>{{center.nombre_centro}}</h2>
+            <span class="distance">
+              <i class="fa-solid fa-location-dot"></i>
+              {{center.distancia}}
+            </span>
+          </div>
+          <p class="address">{{center.direccion_centro}}</p>
+          <p class="commune">
+            <i class="fa-solid fa-location-dot"></i>
+            {{center.comuna}}
+          </p>
+          <p class="contact" *ngIf="center.tipo !== 'campana'">
+            <i class="fa-solid fa-phone"></i>
+            {{center.telefono}}
+          </p>
+          
+          <ion-button expand="block" 
+                      (click)="showDetails(center.id_centro)" 
+                      color="danger">
+            Ver Detalles
+          </ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

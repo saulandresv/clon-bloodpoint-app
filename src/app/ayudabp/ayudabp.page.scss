@@ -1,0 +1,166 @@
+// Fix content spacing - responsive margin
+ion-content {
+  --padding-top: 8vh;
+}
+
+.custom-thumbnail {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .custom-thumbnail i {
+    font-size: 26px;
+  }
+
+ion-content {
+  --background: hsl(0, 76%, 43%);
+  position: relative;
+  height: 100%;
+
+  .ovalo {
+    position: absolute;
+    border-radius: 100%;
+    width: 150%;
+    height: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  .ovalotop {
+    top: 180px;
+    background-color: #cf8686;
+    z-index: -1;
+  }
+
+  .ovalomid {
+    top: 470px;
+    background-color: #e57373;
+    z-index: -2;
+  }
+
+  .header-section {
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+
+    ion-back-button {
+      --color: white;
+      --padding-start: 0;
+      --padding-end: 0;
+      --icon-font-size: 24px;
+      --icon-margin-end: 0;
+      --margin-start: 0;
+      --margin-end: 0;
+      --min-width: 24px;
+      --min-height: 24px;
+    }
+
+    h1 {
+      color: white;
+      font-size: 32px;
+      margin: 0;
+    }
+  }
+
+  .faq-list {
+    padding: 20px 16px;
+    position: relative;
+    z-index: 1;
+
+    .faq-item {
+      --background: transparent;
+      --border-color: rgba(255, 255, 255, 0.2);
+      --border-style: solid;
+      --border-width: 0 0 1px 0;
+      --padding-start: 0;
+      --padding-end: 0;
+      --inner-padding-end: 0;
+      margin-bottom: 16px;
+
+      ion-label {
+        color: white;
+        font-size: 20px;
+        margin: 16px 0;
+      }
+
+      &::part(detail-icon) {
+        color: white;
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .not-found-section {
+    padding: 32px 16px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+
+    h2 {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 24px;
+      font-weight: normal;
+    }
+
+    .chat-button {
+      --background: rgba(255, 255, 255, 0.2);
+      --color: white;
+      --border-radius: 25px;
+      height: 48px;
+      font-size: 18px;
+      --box-shadow: none;
+      text-transform: none;
+
+      i {
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+// FAQ Alert styles
+.faq-alert {
+  --backdrop-opacity: 0.4;
+  
+  .alert-wrapper {
+    --background: white;
+    --max-width: 90%;
+    --border-radius: 12px;
+  }
+  
+  .alert-head {
+    padding: 20px 20px 0 20px;
+    
+    h2 {
+      color: #e57373;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  
+  .alert-message {
+    padding: 16px 20px 20px 20px;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .alert-button-group {
+    padding: 0 20px 20px 20px;
+    
+    .alert-button-confirm {
+      --background: #e57373;
+      --color: white;
+      --border-radius: 8px;
+      font-weight: 500;
+    }
+  }
+}

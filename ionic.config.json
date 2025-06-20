@@ -1,0 +1,7 @@
+{
+  "name": "bloodpoint",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
