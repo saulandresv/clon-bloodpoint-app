@@ -1,8 +1,10 @@
+> [!IMPORTANT]
+> Implementación propia del proyecto de título **BloodPoint**, desarrollado en equipo en DuocUC.
+> Ver repositorio original: [Camilink/BloodPoint](https://github.com/Camilink/BloodPoint)
+
 # BloodPoint App
 
 App móvil de gestión y promoción de donaciones de sangre, desarrollada como parte del proyecto de título **BloodPoint**.
-
-> Implementación propia del frontend original → [Camilink/BloodPoint](https://github.com/Camilink/BloodPoint)
 
 ## Stack
 
@@ -32,6 +34,6 @@ npx cap sync android
 npx cap open android   # abre en Android Studio
 ```
 
-## Relación con el proyecto original
+## Backend
 
-Este repositorio es una implementación propia del frontend del proyecto de título [BloodPoint](https://github.com/Camilink/BloodPoint), desarrollado en equipo en DuocUC. El backend correspondiente está en [clon-bloodpoint-core2](https://github.com/saulandresv/clon-bloodpoint-core2).
+API REST correspondiente: [clon-bloodpoint-core2](https://github.com/saulandresv/clon-bloodpoint-core2)
