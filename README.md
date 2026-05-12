@@ -14,17 +14,19 @@ App móvil de gestión y promoción de donaciones de sangre.
 | Móvil | Capacitor 7 (Android) |
 | Mapas | Mapbox GL |
 | Notificaciones | Firebase Cloud Messaging |
-| Escaneo | MLKit Barcode Scanner (@capacitor-mlkit) |
+| Escaneo | MLKit Barcode Scanner |
 | QR | angularx-qrcode |
 | Lenguaje | TypeScript + RxJS |
 
-## Funcionalidades
+## Mis contribuciones
 
-- Mapa interactivo de puntos de donación con Mapbox
-- Escáner de código QR y barras para validación de donantes
-- Notificaciones push de campañas de donación vía Firebase
-- Generación de QR por donante
-- Haptics, share nativo y acceso a device info vía Capacitor
+- **Auth:** conexión de formularios de login y registro al backend
+- **Chatbot:** integración del módulo chatbot con validador en Docker
+- **QR nativo:** escáner QR vía Capacitor MLKit (no web)
+- **Notificaciones push:** implementación de Firebase Cloud Messaging (`firebase.service.ts`, página de notificaciones)
+- **Logros:** página y lógica de logros del donante
+- **Selección de lugar de donación:** página con integración a API de centros
+- **Fixes globales:** rutas, solicitar donación, API service
 
 ## Instalación
 
@@ -37,7 +39,7 @@ npm start          # web (desarrollo)
 ```bash
 npm run build
 npx cap sync android
-npx cap open android   # abre en Android Studio
+npx cap open android
 ```
 
 ## Backend
