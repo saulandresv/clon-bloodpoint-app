@@ -4,21 +4,27 @@
 
 # BloodPoint App
 
-App móvil de gestión y promoción de donaciones de sangre, desarrollada como parte del proyecto de título **BloodPoint**.
+App móvil de gestión y promoción de donaciones de sangre.
 
 ## Stack
 
-- **Framework:** Angular 19 + Ionic 8 + Capacitor 7
-- **Plataforma:** Android (APK vía Capacitor)
-- **Notificaciones:** Firebase Cloud Messaging
-- **Escaneo:** Barcode scanning vía MLKit
+| Categoría | Tecnología |
+|-----------|-----------|
+| Framework | Angular 19 + Ionic 8 |
+| Móvil | Capacitor 7 (Android) |
+| Mapas | Mapbox GL |
+| Notificaciones | Firebase Cloud Messaging |
+| Escaneo | MLKit Barcode Scanner (@capacitor-mlkit) |
+| QR | angularx-qrcode |
+| Lenguaje | TypeScript + RxJS |
 
 ## Funcionalidades
 
-- Registro y login de donantes
-- Escáner de código QR/barras para validación
-- Notificaciones push de campañas de donación
-- Historial de donaciones del usuario
+- Mapa interactivo de puntos de donación con Mapbox
+- Escáner de código QR y barras para validación de donantes
+- Notificaciones push de campañas de donación vía Firebase
+- Generación de QR por donante
+- Haptics, share nativo y acceso a device info vía Capacitor
 
 ## Instalación
 
